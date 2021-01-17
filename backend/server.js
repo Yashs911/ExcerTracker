@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -15,7 +16,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
+	console.log("MongoDB database connection established successfully");
 })
 
 const exercisesRouter = require('./routes/exercises');
@@ -26,13 +27,13 @@ app.use('/users', usersRouter);
 
 if (process.env.NODE_ENV == "production") {
 
-	app.use(express.static("./build"));
+	app.use(express.static("client/build"));
 
 	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "./exam-tracker", "build", "index.html"));
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 	});
 }
 
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+	console.log(`Server is running on port: ${port}`);
 });
