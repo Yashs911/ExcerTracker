@@ -95,10 +95,10 @@ export default class EditExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Edit Test Log</h3>
+      <h3>Edit Exercise Log</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group">
-          <label>Course: </label>
+          <label>User: </label>
           <select ref="userInput"
               required
               className="form-control"
@@ -124,7 +124,7 @@ export default class EditExercise extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Marks : </label>
+          <label>Duration (in minutes): </label>
           <input
               type="text"
               className="form-control"
